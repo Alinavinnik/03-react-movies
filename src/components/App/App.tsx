@@ -16,10 +16,11 @@ function App() {
   const [error, setError] = useState(false);
 
   const hideModal = () => setSelectedMovie(null);
-  setIsLoading(true);
-  setError(false);
+
   const searchBarHeandler = async (query: string) => {
     try {
+      setIsLoading(true);
+      setError(false);
       const response = await fetchMovies(query);
       if (response.length === 0) {
         toast.error('No movies found for your request.');
