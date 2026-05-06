@@ -1,5 +1,6 @@
 import type Movie from '../../types/movie';
 import css from './MovieModal.module.css';
+import { createPortal } from 'react-dom';
 
 interface MovieModalProps {
   movie: Movie;
@@ -7,7 +8,7 @@ interface MovieModalProps {
 }
 
 function MovieModal({ movie, onClose }: MovieModalProps) {
-  return (
+  return createPortal(
     <div className={css.backdrop} role="dialog" aria-modal="true">
       <div className={css.modal}>
         <button
@@ -33,7 +34,8 @@ function MovieModal({ movie, onClose }: MovieModalProps) {
           </p>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 
